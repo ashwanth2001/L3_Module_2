@@ -2,6 +2,7 @@ package intro_to_file_io;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 import javax.swing.JOptionPane;
@@ -9,18 +10,18 @@ import javax.swing.JOptionPane;
 public class Encrypt {
 	
 	public static void main(String[] args) {
-		String s = JOptionPane.showInputDialog("Type in a message to encrypt");
+		String fin = "";
+		String s = JOptionPane.showInputDialog("Type in a message to be encrypted.");
+		for(int i = 0; i<s.length(); i++) {
+			char c = s.charAt(i);
+			int c1 = c;
+			fin+= c1 + " ";
+		}
 		try {
-			FileReader fr = new FileReader("src/intro_to_file_io/test3.txt");
-			int c = fr.read();
-			while(c != -1){
-				System.out.print((int)c);
-				c = fr.read();
+			FileWriter fw = new FileWriter("src/intro_to_file_io/test3.txt");
+			fw.write(fin);
 				
-			}
-			fr.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			fw.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
