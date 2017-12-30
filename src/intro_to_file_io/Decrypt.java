@@ -32,6 +32,7 @@ public class Decrypt {
 					a = 0;
 				}
 			}
+			
 		try {
 			FileWriter fw = new FileWriter("src/intro_to_file_io/test4.txt");
 			fw.write(fin);
