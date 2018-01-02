@@ -2,6 +2,11 @@ package intro_to_file_io;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -62,12 +67,42 @@ public class TodoList implements ActionListener{
 			}
 		}
 		if(e.getSource() == save) {
-			for(int i = 0; i<counter; i++) {
-				System.out.println(task.get(i));
+			try {
+				FileWriter fw = new FileWriter("src/intro_to_file_io/test5.txt");
+				for(int i = 0; i<counter; i++) {
+					fw.write(task.get(i) + "\n");
+				}
+				fw.close();
+			} catch (IOException e1) {
+				e1.printStackTrace();
 			}
+			
+			/*for(int i = 0; i<counter; i++) {
+				System.out.println(task.get(i));
+			}*/
+			
 		}
 		if(e.getSource() == load) {
-			
+			task = new ArrayList<String>();
+			counter = 0;
+			try {
+				BufferedReader br = new BufferedReader(new FileReader("src/intro_to_file_io/test6.txt"));
+				
+				String line = br.readLine();
+				while(line != null){
+					task.add(line);
+					counter++;
+					line = br.readLine();
+				}
+				br.close();
+			} catch (FileNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IOException e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
+			}
 		}
 	}
 }
+//Copyrights are cool

@@ -1,7 +1,5 @@
 package intro_to_file_io;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -28,3 +26,4 @@ public class Encrypt {
 	}
 	
 }
+//Copyrights are cool
